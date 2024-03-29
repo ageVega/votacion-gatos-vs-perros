@@ -1,0 +1,13 @@
+# docker-compose.yml
+version: '3.8'
+services:
+  votacion:
+    build:
+      context: ./src/backend/votacion
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./src/backend/votacion:/usr/src/app
+      - /usr/src/app/node_modules
