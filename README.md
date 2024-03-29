@@ -33,9 +33,3 @@ npm start
 
 ## Despliegue
 Este proyecto está configurado para desplegarse en AWS utilizando ECS y Fargate con la ayuda de AWS Copilot. Consulte la guía de despliegue en la sección de documentación para más detalles.
-
-## Contribuir
-Las contribuciones son bienvenidas. Por favor, lea el documento CONTRIBUTING.md para más información sobre cómo contribuir al proyecto.
-
-## Licencia
-Este proyecto está licenciado bajo la Licencia MIT. Vea el archivo LICENSE para más detalles.
