@@ -1,0 +1,6 @@
+
+# Ejecutar el Script de Prueba desde Fuera del Contenedor
+docker compose run votacion node testConnection.js
+
+# Parar, construir y lanzar de nuevo
+docker compose down && docker compose build && docker compose up -d
