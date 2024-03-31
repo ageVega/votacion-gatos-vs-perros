@@ -5,10 +5,7 @@ FROM node:18
 WORKDIR /usr/src/app
 
 # Instalar dependencias
-# Un asterisco (*) se usa para asegurarse de que tanto package.json como package-lock.json sean copiados
-# donde estén disponibles
 COPY package*.json ./
-
 RUN npm install
 # Si estás construyendo tu código para producción
 # RUN npm ci --only=production
