@@ -1,0 +1,6 @@
+
+
+# Probar votacion gato
+curl -X POST http://localhost:3000/vote -H 'Content-Type: application/json' -d '{"animal": "gatos"}'
+
+curl http://localhost:3000/results
