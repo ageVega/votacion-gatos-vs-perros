@@ -1,0 +1,527 @@
+{
+    "Vpc": {
+        "CidrBlock": "10.0.0.0/16",
+        "DhcpOptionsId": "dopt-0c0c59004e474d8af",
+        "State": "pending",
+        "VpcId": "vpc-00b673956a17f3cf0",
+        "OwnerId": "147135207918",
+        "InstanceTenancy": "default",
+        "Ipv6CidrBlockAssociationSet": [],
+        "CidrBlockAssociationSet": [
+            {
+                "AssociationId": "vpc-cidr-assoc-0ed7274ec3557ab67",
+                "CidrBlock": "10.0.0.0/16",
+                "CidrBlockState": {
+                    "State": "associated"
+                }
+            }
+        ],
+        "IsDefault": false,
+        "Tags": [
+            {
+                "Key": "Name",
+                "Value": "MatrixVPC"
+            }
+        ]
+    }
+}
+{
+    "Subnet": {
+        "AvailabilityZone": "eu-west-1a",
+        "AvailabilityZoneId": "euw1-az1",
+        "AvailableIpAddressCount": 251,
+        "CidrBlock": "10.0.1.0/24",
+        "DefaultForAz": false,
+        "MapPublicIpOnLaunch": false,
+        "State": "available",
+        "SubnetId": "subnet-0ada0bd0199e4bef2",
+        "VpcId": "vpc-00b673956a17f3cf0",
+        "OwnerId": "147135207918",
+        "AssignIpv6AddressOnCreation": false,
+        "Ipv6CidrBlockAssociationSet": [],
+        "SubnetArn": "arn:aws:ec2:eu-west-1:147135207918:subnet/subnet-0ada0bd0199e4bef2",
+        "EnableDns64": false,
+        "Ipv6Native": false,
+        "PrivateDnsNameOptionsOnLaunch": {
+            "HostnameType": "ip-name",
+            "EnableResourceNameDnsARecord": false,
+            "EnableResourceNameDnsAAAARecord": false
+        }
+    }
+}
+{
+    "Subnet": {
+        "AvailabilityZone": "eu-west-1b",
+        "AvailabilityZoneId": "euw1-az2",
+        "AvailableIpAddressCount": 251,
+        "CidrBlock": "10.0.2.0/24",
+        "DefaultForAz": false,
+        "MapPublicIpOnLaunch": false,
+        "State": "available",
+        "SubnetId": "subnet-065f2401af37e73e1",
+        "VpcId": "vpc-00b673956a17f3cf0",
+        "OwnerId": "147135207918",
+        "AssignIpv6AddressOnCreation": false,
+        "Ipv6CidrBlockAssociationSet": [],
+        "SubnetArn": "arn:aws:ec2:eu-west-1:147135207918:subnet/subnet-065f2401af37e73e1",
+        "EnableDns64": false,
+        "Ipv6Native": false,
+        "PrivateDnsNameOptionsOnLaunch": {
+            "HostnameType": "ip-name",
+            "EnableResourceNameDnsARecord": false,
+            "EnableResourceNameDnsAAAARecord": false
+        }
+    }
+}
+{
+    "Subnet": {
+        "AvailabilityZone": "eu-west-1c",
+        "AvailabilityZoneId": "euw1-az3",
+        "AvailableIpAddressCount": 251,
+        "CidrBlock": "10.0.3.0/24",
+        "DefaultForAz": false,
+        "MapPublicIpOnLaunch": false,
+        "State": "available",
+        "SubnetId": "subnet-07064a6da228f9de9",
+        "VpcId": "vpc-00b673956a17f3cf0",
+        "OwnerId": "147135207918",
+        "AssignIpv6AddressOnCreation": false,
+        "Ipv6CidrBlockAssociationSet": [],
+        "SubnetArn": "arn:aws:ec2:eu-west-1:147135207918:subnet/subnet-07064a6da228f9de9",
+        "EnableDns64": false,
+        "Ipv6Native": false,
+        "PrivateDnsNameOptionsOnLaunch": {
+            "HostnameType": "ip-name",
+            "EnableResourceNameDnsARecord": false,
+            "EnableResourceNameDnsAAAARecord": false
+        }
+    }
+}
+{
+    "Subnet": {
+        "AvailabilityZone": "eu-west-1a",
+        "AvailabilityZoneId": "euw1-az1",
+        "AvailableIpAddressCount": 251,
+        "CidrBlock": "10.0.4.0/24",
+        "DefaultForAz": false,
+        "MapPublicIpOnLaunch": false,
+        "State": "available",
+        "SubnetId": "subnet-004178c7930be175a",
+        "VpcId": "vpc-00b673956a17f3cf0",
+        "OwnerId": "147135207918",
+        "AssignIpv6AddressOnCreation": false,
+        "Ipv6CidrBlockAssociationSet": [],
+        "SubnetArn": "arn:aws:ec2:eu-west-1:147135207918:subnet/subnet-004178c7930be175a",
+        "EnableDns64": false,
+        "Ipv6Native": false,
+        "PrivateDnsNameOptionsOnLaunch": {
+            "HostnameType": "ip-name",
+            "EnableResourceNameDnsARecord": false,
+            "EnableResourceNameDnsAAAARecord": false
+        }
+    }
+}
+{
+    "Subnet": {
+        "AvailabilityZone": "eu-west-1b",
+        "AvailabilityZoneId": "euw1-az2",
+        "AvailableIpAddressCount": 251,
+        "CidrBlock": "10.0.5.0/24",
+        "DefaultForAz": false,
+        "MapPublicIpOnLaunch": false,
+        "State": "available",
+        "SubnetId": "subnet-09d68431f83e7aa39",
+        "VpcId": "vpc-00b673956a17f3cf0",
+        "OwnerId": "147135207918",
+        "AssignIpv6AddressOnCreation": false,
+        "Ipv6CidrBlockAssociationSet": [],
+        "SubnetArn": "arn:aws:ec2:eu-west-1:147135207918:subnet/subnet-09d68431f83e7aa39",
+        "EnableDns64": false,
+        "Ipv6Native": false,
+        "PrivateDnsNameOptionsOnLaunch": {
+            "HostnameType": "ip-name",
+            "EnableResourceNameDnsARecord": false,
+            "EnableResourceNameDnsAAAARecord": false
+        }
+    }
+}
+{
+    "Subnet": {
+        "AvailabilityZone": "eu-west-1c",
+        "AvailabilityZoneId": "euw1-az3",
+        "AvailableIpAddressCount": 251,
+        "CidrBlock": "10.0.6.0/24",
+        "DefaultForAz": false,
+        "MapPublicIpOnLaunch": false,
+        "State": "available",
+        "SubnetId": "subnet-00d5551a1511563bd",
+        "VpcId": "vpc-00b673956a17f3cf0",
+        "OwnerId": "147135207918",
+        "AssignIpv6AddressOnCreation": false,
+        "Ipv6CidrBlockAssociationSet": [],
+        "SubnetArn": "arn:aws:ec2:eu-west-1:147135207918:subnet/subnet-00d5551a1511563bd",
+        "EnableDns64": false,
+        "Ipv6Native": false,
+        "PrivateDnsNameOptionsOnLaunch": {
+            "HostnameType": "ip-name",
+            "EnableResourceNameDnsARecord": false,
+            "EnableResourceNameDnsAAAARecord": false
+        }
+    }
+}
+{
+    "InternetGateway": {
+        "Attachments": [],
+        "InternetGatewayId": "igw-0b76e1a83361e6702",
+        "OwnerId": "147135207918",
+        "Tags": [
+            {
+                "Key": "Name",
+                "Value": "MatrixIGW"
+            }
+        ]
+    }
+}
+{
+    "RouteTable": {
+        "Associations": [],
+        "PropagatingVgws": [],
+        "RouteTableId": "rtb-0dc90e46b92081a3b",
+        "Routes": [
+            {
+                "DestinationCidrBlock": "10.0.0.0/16",
+                "GatewayId": "local",
+                "Origin": "CreateRouteTable",
+                "State": "active"
+            }
+        ],
+        "Tags": [
+            {
+                "Key": "Name",
+                "Value": "MatrixPublicRT"
+            }
+        ],
+        "VpcId": "vpc-00b673956a17f3cf0",
+        "OwnerId": "147135207918"
+    }
+}
+{
+    "Return": true
+}
+{
+    "AssociationId": "rtbassoc-07bf4cc3b7fe0e709",
+    "AssociationState": {
+        "State": "associated"
+    }
+}
+{
+    "AssociationId": "rtbassoc-06dbd43b017710de2",
+    "AssociationState": {
+        "State": "associated"
+    }
+}
+{
+    "AssociationId": "rtbassoc-0e87ccb8d28984c6d",
+    "AssociationState": {
+        "State": "associated"
+    }
+}
+{
+    "GroupId": "sg-0339b90017722fedd"
+}
+{
+    "DBSubnetGroup": {
+        "DBSubnetGroupName": "matrix-subnet-group",
+        "DBSubnetGroupDescription": "Subnet group for Matrix DocumentDB",
+        "VpcId": "vpc-00b673956a17f3cf0",
+        "SubnetGroupStatus": "Complete",
+        "Subnets": [
+            {
+                "SubnetIdentifier": "subnet-00d5551a1511563bd",
+                "SubnetAvailabilityZone": {
+                    "Name": "eu-west-1c"
+                },
+                "SubnetStatus": "Active"
+            },
+            {
+                "SubnetIdentifier": "subnet-09d68431f83e7aa39",
+                "SubnetAvailabilityZone": {
+                    "Name": "eu-west-1b"
+                },
+                "SubnetStatus": "Active"
+            },
+            {
+                "SubnetIdentifier": "subnet-004178c7930be175a",
+                "SubnetAvailabilityZone": {
+                    "Name": "eu-west-1a"
+                },
+                "SubnetStatus": "Active"
+            }
+        ],
+        "DBSubnetGroupArn": "arn:aws:rds:eu-west-1:147135207918:subgrp:matrix-subnet-group"
+    }
+}
+{
+    "DBClusters": [
+        {
+            "AvailabilityZones": [
+                "eu-west-1a",
+                "eu-west-1b",
+                "eu-west-1c"
+            ],
+            "BackupRetentionPeriod": 1,
+            "DBClusterIdentifier": "matrix-cluster",
+            "DBClusterParameterGroup": "default.docdb5.0",
+            "DBSubnetGroup": "matrix-subnet-group",
+            "Status": "available",
+            "EarliestRestorableTime": "2024-03-31T16:24:05.499000+00:00",
+            "Endpoint": "matrix-cluster.cluster-cl2iww8c0ioh.eu-west-1.docdb.amazonaws.com",
+            "ReaderEndpoint": "matrix-cluster.cluster-ro-cl2iww8c0ioh.eu-west-1.docdb.amazonaws.com",
+            "MultiAZ": false,
+            "Engine": "docdb",
+            "EngineVersion": "5.0.0",
+            "LatestRestorableTime": "2024-03-31T16:24:05.499000+00:00",
+            "Port": 27017,
+            "MasterUsername": "test",
+            "PreferredBackupWindow": "00:49-01:19",
+            "PreferredMaintenanceWindow": "mon:23:39-tue:00:09",
+            "ReadReplicaIdentifiers": [],
+            "DBClusterMembers": [],
+            "VpcSecurityGroups": [
+                {
+                    "VpcSecurityGroupId": "sg-0339b90017722fedd",
+                    "Status": "active"
+                }
+            ],
+            "HostedZoneId": "Z29HEUU7NL3S3J",
+            "StorageEncrypted": false,
+            "DbClusterResourceId": "cluster-DNE5SRLWJ6OV3PX7EW4VSUHRFE",
+            "DBClusterArn": "arn:aws:rds:eu-west-1:147135207918:cluster:matrix-cluster",
+            "AssociatedRoles": [],
+            "ClusterCreateTime": "2024-03-31T16:23:26.577000+00:00",
+            "DeletionProtection": false
+        }
+    ]
+}
+{
+    "DBInstance": {
+        "DBInstanceIdentifier": "matrix-instance-1",
+        "DBInstanceClass": "db.t3.medium",
+        "Engine": "docdb",
+        "DBInstanceStatus": "creating",
+        "PreferredBackupWindow": "00:49-01:19",
+        "BackupRetentionPeriod": 1,
+        "VpcSecurityGroups": [
+            {
+                "VpcSecurityGroupId": "sg-0339b90017722fedd",
+                "Status": "active"
+            }
+        ],
+        "DBSubnetGroup": {
+            "DBSubnetGroupName": "matrix-subnet-group",
+            "DBSubnetGroupDescription": "Subnet group for Matrix DocumentDB",
+            "VpcId": "vpc-00b673956a17f3cf0",
+            "SubnetGroupStatus": "Complete",
+            "Subnets": [
+                {
+                    "SubnetIdentifier": "subnet-00d5551a1511563bd",
+                    "SubnetAvailabilityZone": {
+                        "Name": "eu-west-1c"
+                    },
+                    "SubnetStatus": "Active"
+                },
+                {
+                    "SubnetIdentifier": "subnet-09d68431f83e7aa39",
+                    "SubnetAvailabilityZone": {
+                        "Name": "eu-west-1b"
+                    },
+                    "SubnetStatus": "Active"
+                },
+                {
+                    "SubnetIdentifier": "subnet-004178c7930be175a",
+                    "SubnetAvailabilityZone": {
+                        "Name": "eu-west-1a"
+                    },
+                    "SubnetStatus": "Active"
+                }
+            ]
+        },
+        "PreferredMaintenanceWindow": "sat:03:43-sat:04:13",
+        "PendingModifiedValues": {},
+        "EngineVersion": "5.0.0",
+        "AutoMinorVersionUpgrade": true,
+        "PubliclyAccessible": false,
+        "DBClusterIdentifier": "matrix-cluster",
+        "StorageEncrypted": false,
+        "DbiResourceId": "db-HOKF6FCAILU57BLEH7WKRFAVBI",
+        "CACertificateIdentifier": "rds-ca-rsa2048-g1",
+        "CopyTagsToSnapshot": false,
+        "PromotionTier": 1,
+        "DBInstanceArn": "arn:aws:rds:eu-west-1:147135207918:db:matrix-instance-1"
+    }
+}
+{
+    "GroupId": "sg-0aa1ccb0290cdb259"
+}
+{
+    "Return": true,
+    "SecurityGroupRules": [
+        {
+            "SecurityGroupRuleId": "sgr-03d31fc091432a82f",
+            "GroupId": "sg-0aa1ccb0290cdb259",
+            "GroupOwnerId": "147135207918",
+            "IsEgress": false,
+            "IpProtocol": "tcp",
+            "FromPort": 22,
+            "ToPort": 22,
+            "CidrIpv4": "79.116.138.220/32"
+        }
+    ]
+}
+{
+    "Return": true,
+    "SecurityGroupRules": [
+        {
+            "SecurityGroupRuleId": "sgr-07e75bdc32b574dc3",
+            "GroupId": "sg-0339b90017722fedd",
+            "GroupOwnerId": "147135207918",
+            "IsEgress": false,
+            "IpProtocol": "tcp",
+            "FromPort": 27017,
+            "ToPort": 27017,
+            "ReferencedGroupInfo": {
+                "GroupId": "sg-0aa1ccb0290cdb259",
+                "UserId": "147135207918"
+            }
+        }
+    ]
+}
+{
+    "Groups": [],
+    "Instances": [
+        {
+            "AmiLaunchIndex": 0,
+            "ImageId": "ami-0bedb6fd60fc0c2ce",
+            "InstanceId": "i-0caa295489794ea43",
+            "InstanceType": "t3.micro",
+            "KeyName": "MatrixKey",
+            "LaunchTime": "2024-03-31T17:00:25+00:00",
+            "Monitoring": {
+                "State": "disabled"
+            },
+            "Placement": {
+                "AvailabilityZone": "eu-west-1a",
+                "GroupName": "",
+                "Tenancy": "default"
+            },
+            "PrivateDnsName": "ip-10-0-1-12.eu-west-1.compute.internal",
+            "PrivateIpAddress": "10.0.1.12",
+            "ProductCodes": [],
+            "PublicDnsName": "",
+            "State": {
+                "Code": 0,
+                "Name": "pending"
+            },
+            "StateTransitionReason": "",
+            "SubnetId": "subnet-0ada0bd0199e4bef2",
+            "VpcId": "vpc-00b673956a17f3cf0",
+            "Architecture": "x86_64",
+            "BlockDeviceMappings": [],
+            "ClientToken": "c64706da-5733-4e88-8896-e2f871b5bd27",
+            "EbsOptimized": false,
+            "EnaSupport": true,
+            "Hypervisor": "xen",
+            "NetworkInterfaces": [
+                {
+                    "Attachment": {
+                        "AttachTime": "2024-03-31T17:00:25+00:00",
+                        "AttachmentId": "eni-attach-02d106d70c5411955",
+                        "DeleteOnTermination": true,
+                        "DeviceIndex": 0,
+                        "Status": "attaching",
+                        "NetworkCardIndex": 0
+                    },
+                    "Description": "",
+                    "Groups": [
+                        {
+                            "GroupName": "BastionSG",
+                            "GroupId": "sg-0aa1ccb0290cdb259"
+                        }
+                    ],
+                    "Ipv6Addresses": [],
+                    "MacAddress": "02:a2:08:c6:19:a5",
+                    "NetworkInterfaceId": "eni-0acf1c94de7be6712",
+                    "OwnerId": "147135207918",
+                    "PrivateIpAddress": "10.0.1.12",
+                    "PrivateIpAddresses": [
+                        {
+                            "Primary": true,
+                            "PrivateIpAddress": "10.0.1.12"
+                        }
+                    ],
+                    "SourceDestCheck": true,
+                    "Status": "in-use",
+                    "SubnetId": "subnet-0ada0bd0199e4bef2",
+                    "VpcId": "vpc-00b673956a17f3cf0",
+                    "InterfaceType": "interface"
+                }
+            ],
+            "RootDeviceName": "/dev/xvda",
+            "RootDeviceType": "ebs",
+            "SecurityGroups": [
+                {
+                    "GroupName": "BastionSG",
+                    "GroupId": "sg-0aa1ccb0290cdb259"
+                }
+            ],
+            "SourceDestCheck": true,
+            "StateReason": {
+                "Code": "pending",
+                "Message": "pending"
+            },
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "BastionHost"
+                }
+            ],
+            "VirtualizationType": "hvm",
+            "CpuOptions": {
+                "CoreCount": 1,
+                "ThreadsPerCore": 2
+            },
+            "CapacityReservationSpecification": {
+                "CapacityReservationPreference": "open"
+            },
+            "MetadataOptions": {
+                "State": "pending",
+                "HttpTokens": "optional",
+                "HttpPutResponseHopLimit": 1,
+                "HttpEndpoint": "enabled",
+                "HttpProtocolIpv6": "disabled",
+                "InstanceMetadataTags": "disabled"
+            },
+            "EnclaveOptions": {
+                "Enabled": false
+            },
+            "PrivateDnsNameOptions": {
+                "HostnameType": "ip-name",
+                "EnableResourceNameDnsARecord": false,
+                "EnableResourceNameDnsAAAARecord": false
+            },
+            "MaintenanceOptions": {
+                "AutoRecovery": "default"
+            },
+            "CurrentInstanceBootMode": "legacy-bios"
+        }
+    ],
+    "OwnerId": "147135207918",
+    "ReservationId": "r-0545748684738f31f"
+}
+{
+    "PublicIp": "108.128.135.204",
+    "AllocationId": "eipalloc-05cbeb56e4831655a",
+    "PublicIpv4Pool": "amazon",
+    "NetworkBorderGroup": "eu-west-1",
+    "Domain": "vpc"
+}

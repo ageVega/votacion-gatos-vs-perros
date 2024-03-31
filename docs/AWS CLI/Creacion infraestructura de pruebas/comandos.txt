@@ -1,0 +1,99 @@
+# ####################################################################################################
+# CREACION DE VPC, SUBREDES PUBLICAS Y PRIVADAS, GATEWAY A INTERNET, TABLAS DE RUTAS
+# ####################################################################################################
+
+# Crea la VPC
+aws ec2 create-vpc --cidr-block 10.0.0.0/16 --tag-specifications 'ResourceType=vpc,Tags=[{Key=Name,Value=MatrixVPC}]' > output.txt
+
+# Con el VPC ID vpc-00b673956a17f3cf0 ya disponible
+# Crear Subredes Públicas
+aws ec2 create-subnet --vpc-id vpc-00b673956a17f3cf0 --cidr-block 10.0.1.0/24 --availability-zone eu-west-1a >> output.txt
+aws ec2 create-subnet --vpc-id vpc-00b673956a17f3cf0 --cidr-block 10.0.2.0/24 --availability-zone eu-west-1b >> output.txt
+aws ec2 create-subnet --vpc-id vpc-00b673956a17f3cf0 --cidr-block 10.0.3.0/24 --availability-zone eu-west-1c >> output.txt
+
+# Crear Subredes Privadas
+aws ec2 create-subnet --vpc-id vpc-00b673956a17f3cf0 --cidr-block 10.0.4.0/24 --availability-zone eu-west-1a >> output.txt
+aws ec2 create-subnet --vpc-id vpc-00b673956a17f3cf0 --cidr-block 10.0.5.0/24 --availability-zone eu-west-1b >> output.txt
+aws ec2 create-subnet --vpc-id vpc-00b673956a17f3cf0 --cidr-block 10.0.6.0/24 --availability-zone eu-west-1c >> output.txt
+
+# Crear Internet Gateway
+aws ec2 create-internet-gateway --tag-specifications 'ResourceType=internet-gateway,Tags=[{Key=Name,Value=MatrixIGW}]' >> output.txt
+
+# Ahora que tenemos el ID del Internet Gateway igw-0b76e1a83361e6702
+# Adjuntar el Internet Gateway a la VPC
+aws ec2 attach-internet-gateway --internet-gateway-id igw-0b76e1a83361e6702 --vpc-id vpc-00b673956a17f3cf0 >> output.txt
+
+# Crear la tabla de rutas
+aws ec2 create-route-table --vpc-id vpc-00b673956a17f3cf0 --tag-specifications 'ResourceType=route-table,Tags=[{Key=Name,Value=MatrixPublicRT}]' >> output.txt
+
+# El ID de la tabla de rutas es rtb-0dc90e46b92081a3b
+# Agregar la ruta hacia el Internet Gateway en la tabla de rutas
+aws ec2 create-route --route-table-id rtb-0dc90e46b92081a3b --destination-cidr-block 0.0.0.0/0 --gateway-id igw-0b76e1a83361e6702 >> output.txt
+
+# Asociar las Subredes Públicas con la Tabla de Rutas
+aws ec2 associate-route-table --subnet-id subnet-0ada0bd0199e4bef2 --route-table-id rtb-0dc90e46b92081a3b >> output.txt
+aws ec2 associate-route-table --subnet-id subnet-065f2401af37e73e1 --route-table-id rtb-0dc90e46b92081a3b >> output.txt
+aws ec2 associate-route-table --subnet-id subnet-07064a6da228f9de9 --route-table-id rtb-0dc90e46b92081a3b >> output.txt
+
+
+# ####################################################################################################
+# CREACION DE CLUSTER E INSTANCIA DOCUMENTDB, GRUPOS DE SEGURIDAD, GRUPOS DE SUBREDES BBDD
+# ####################################################################################################
+
+# Crear un Security Group para DocumentDB
+aws ec2 create-security-group --group-name MatrixDocDBSG --description "Security Group for DocumentDB access" --vpc-id vpc-00b673956a17f3cf0 >> output.txt
+
+# Con los IDs de tus subredes privadas
+# Crear un DB Subnet Group que incluya tus subredes privadas
+aws docdb create-db-subnet-group --db-subnet-group-name matrix-subnet-group --db-subnet-group-description "Subnet group for Matrix DocumentDB" --subnet-ids "subnet-004178c7930be175a" "subnet-09d68431f83e7aa39" "subnet-00d5551a1511563bd" >> output.txt
+
+# Usuario: test
+# Password: test2323test
+# Crear un Cluster de DocumentDB
+aws docdb create-db-cluster --db-cluster-identifier matrix-cluster --engine docdb --master-username test --master-user-password test2323test --vpc-security-group-ids sg-0339b90017722fedd --db-subnet-group-name matrix-subnet-group >> output.txt
+
+# Crear una instancia de DocumentDB
+aws docdb create-db-instance --db-instance-identifier matrix-instance-1 --db-instance-class db.t3.medium --engine docdb --db-cluster-identifier matrix-cluster >> output.txt
+
+
+# ####################################################################################################
+# CREACION DE BASTION EC2, PAR DE CLAVES SSH, GRUPO DE SEGURIDAD, EIP
+# ####################################################################################################
+
+# Creacion de par de claves ssh (crear desde directorio /certs)
+aws ec2 create-key-pair --key-name MatrixKey --query 'KeyMaterial' --output text > MatrixKey.pem
+
+# Crear un Grupo de Seguridad para el Bastión EC2
+aws ec2 create-security-group --group-name BastionSG --description "Security group for EC2 bastion" --vpc-id vpc-00b673956a17f3cf0 >> output.txt
+
+# Consultar IP publica
+wget -qO- ipecho.net/plain ; echo
+
+# Agregar Regla al Grupo de Seguridad
+aws ec2 authorize-security-group-ingress --group-id sg-0aa1ccb0290cdb259 --protocol tcp --port 22 --cidr 79.116.138.220/32 >> output.txt
+
+# Ajustar las reglas de seguridad de tu grupo de seguridad asociado con DocumentDB
+aws ec2 authorize-security-group-ingress --group-id sg-0339b90017722fedd --protocol tcp --port 27017 --source-group sg-0aa1ccb0290cdb259 >> output.txt
+
+# Creacion de Bastion EC2 en subred publica
+aws ec2 run-instances --image-id ami-0bedb6fd60fc0c2ce --count 1 --instance-type t3.micro --key-name MatrixKey --security-group-ids sg-0aa1ccb0290cdb259 --subnet-id subnet-0ada0bd0199e4bef2 --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=BastionHost}]' >> output.txt
+
+# Crear una Dirección IP Elástica (EIP)
+aws ec2 allocate-address --domain vpc >> output.txt
+
+# Asociar la Dirección IP Elástica a la Instancia
+aws ec2 associate-address --instance-id i-0caa295489794ea43 --allocation-id eipalloc-05cbeb56e4831655a
+
+
+# ####################################################################################################
+# CONEXION A LOS RECURSOS CREADOS
+# ####################################################################################################
+
+# Conectarse a Bastion EC2 (copiar clave a /tmp)
+cp MatrixKey.pem /tmp/MatrixKey.pem
+chmod 400 "MatrixKey.pem"
+ssh -i "MatrixKey.pem" bitnami@108.128.135.204
+
+# Comprobar acceso a DocumentDB
+wget https://truststore.pki.rds.amazonaws.com/global/global-bundle.pem
+mongo --tls --host matrix-cluster.cluster-cl2iww8c0ioh.eu-west-1.docdb.amazonaws.com:27017 --tlsCAFile global-bundle.pem --username test --password test2323test
