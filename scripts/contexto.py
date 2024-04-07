@@ -36,8 +36,13 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 file_paths = [
     os.path.join(script_dir, '..', 'src', 'backend', 'votacion', 'db.js'),
     os.path.join(script_dir, '..', 'src', 'backend', 'votacion', 'index.js'),
-    os.path.join(script_dir, '..', 'src', 'backend', 'votacion', 'testConnection.js'),
     os.path.join(script_dir, '..', 'src', 'backend', 'votacion', 'Dockerfile'),
+    os.path.join(script_dir, '..', 'nginx', 'nginx.conf'),
+    os.path.join(script_dir, '..', 'src', 'frontend', 'voto_frontend', 'src', 'App.js'),
+    os.path.join(script_dir, '..', 'src', 'frontend', 'voto_frontend', 'src', 'Results.js'),
+    os.path.join(script_dir, '..', 'src', 'frontend', 'voto_frontend', 'Dockerfile'),
+    os.path.join(script_dir, '..', 'src', 'frontend', 'voto_frontend', 'nginx.conf'),
+    os.path.join(script_dir, '..', 'docker-compose.yml')
 ]
 
 # Especifica la ruta de salida
