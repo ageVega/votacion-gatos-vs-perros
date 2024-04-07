@@ -10,23 +10,41 @@ def write_file_content(output_file, file_name, content):
     output_file.write(''.join(content))
     output_file.write('\n\n')
 
-def read_specific_files(file_paths, output_path):
+def print_directory_tree(startpath, output_file, ignore_dirs=None):
+    if ignore_dirs is None:
+        ignore_dirs = ['.git']  # Default ignore directories
+    output_file.write('Estructura del proyecto:\n')
+    output_file.write('```\n')
+    for root, dirs, files in os.walk(startpath, topdown=True):
+        dirs[:] = [d for d in dirs if d not in ignore_dirs]  # Modifica dirs in-place para ignorar directorios no deseados
+        level = root.replace(startpath, '').count(os.sep)
+        indent = ' ' * 4 * (level)
+        output_file.write('{}{}/\n'.format(indent, os.path.basename(root)))
+        subindent = ' ' * 4 * (level + 1)
+        for f in files:
+            output_file.write('{}{}\n'.format(subindent, f))
+    output_file.write('```\n\n')
+
+def read_specific_files(file_paths, output_path, directory_for_tree):
     # Asegúrate de que el directorio de salida exista
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     
     with open(output_path, 'w') as output_file:
+        # Imprimir la estructura del directorio desde el directorio especificado
+        print_directory_tree(directory_for_tree, output_file)
+        
         output_file.write('Algunos ficheros relevantes:\n')
         output_file.write('```\n')
         
         for file_path in file_paths:
-            relative_path = os.path.relpath(file_path)
+            relative_path = os.path.relpath(file_path, directory_for_tree)
             output_file.write(f"{relative_path}\n")
                     
         output_file.write('```\n\n')
         
         for file_path in file_paths:
             content = read_file_content(file_path)
-            relative_path = os.path.relpath(file_path)
+            relative_path = os.path.relpath(file_path, directory_for_tree)
             write_file_content(output_file, relative_path, content)
 
 # Directorio actual donde se encuentra este script
@@ -34,18 +52,21 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Especifica las rutas de los archivos que quieres leer
 file_paths = [
+    os.path.join(script_dir, '..', 'docker-compose.yml'),
+    os.path.join(script_dir, '..', 'nginx', 'nginx.conf'),
+    os.path.join(script_dir, '..', 'src', 'backend', 'votacion', 'Dockerfile'),
     os.path.join(script_dir, '..', 'src', 'backend', 'votacion', 'db.js'),
     os.path.join(script_dir, '..', 'src', 'backend', 'votacion', 'index.js'),
-    os.path.join(script_dir, '..', 'src', 'backend', 'votacion', 'Dockerfile'),
-    os.path.join(script_dir, '..', 'nginx', 'nginx.conf'),
-    os.path.join(script_dir, '..', 'src', 'frontend', 'voto_frontend', 'src', 'App.js'),
-    os.path.join(script_dir, '..', 'src', 'frontend', 'voto_frontend', 'src', 'Results.js'),
     os.path.join(script_dir, '..', 'src', 'frontend', 'voto_frontend', 'Dockerfile'),
     os.path.join(script_dir, '..', 'src', 'frontend', 'voto_frontend', 'nginx.conf'),
-    os.path.join(script_dir, '..', 'docker-compose.yml')
+    os.path.join(script_dir, '..', 'src', 'frontend', 'voto_frontend', 'src', 'App.js'),
+    os.path.join(script_dir, '..', 'src', 'frontend', 'voto_frontend', 'src', 'Results.js')
 ]
 
 # Especifica la ruta de salida
 output_path = os.path.join(script_dir, '..', 'tmp', 'context.txt')
 
-read_specific_files(file_paths, output_path)
+# Directorio desde el cual se debe generar el 'tree'
+directory_for_tree = '/mnt/c/Users/Super Vega/Desktop/Repos/GatoPerro/votacion-gatos-vs-perros/tmp/limpio/votacion-gatos-vs-perros'
+
+read_specific_files(file_paths, output_path, directory_for_tree)
