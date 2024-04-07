@@ -1,6 +1,6 @@
 version: '3.8'
 services:
-  votacion:
+  backend:
     build:
       context: ./src/backend/votacion
     ports:
@@ -11,8 +11,10 @@ services:
       - ./src/backend/votacion:/usr/src/app
       - /usr/src/app/node_modules
       - ./certs/global-bundle.pem:/usr/src/app/certs/global-bundle.pem
+    networks:
+      - votacion-net
 
-  voto_frontend:
+  frontend:
     build:
       context: ./src/frontend/voto_frontend
     ports:
@@ -20,4 +22,10 @@ services:
     environment:
       - NODE_ENV=development
     depends_on:
-      - votacion
+      - backend
+    networks:
+      - votacion-net
+
+networks:
+  votacion-net:
+    driver: bridge
