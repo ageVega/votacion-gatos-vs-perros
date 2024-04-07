@@ -11,3 +11,13 @@ services:
       - ./src/backend/votacion:/usr/src/app
       - /usr/src/app/node_modules
       - ./certs/global-bundle.pem:/usr/src/app/certs/global-bundle.pem
+
+  voto_frontend:
+    build:
+      context: ./src/frontend/voto_frontend
+    ports:
+      - "80:80"
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - votacion

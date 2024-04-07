@@ -15,7 +15,7 @@ def read_specific_files(file_paths, output_path):
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     
     with open(output_path, 'w') as output_file:
-        output_file.write('Estructura del proyecto:\n')
+        output_file.write('Algunos ficheros relevantes:\n')
         output_file.write('```\n')
         
         for file_path in file_paths:
