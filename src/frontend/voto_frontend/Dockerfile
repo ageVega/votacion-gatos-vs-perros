@@ -1,31 +1,30 @@
-# Etapa de construcción usando Node.js
+# Define la etapa de construcción
 FROM node:18 as builder
 
-# Configura el directorio de trabajo
+# Establece el directorio de trabajo
 WORKDIR /app
 
-# Optimización: Copia solo los archivos de definición de dependencias primero.
-# Esto aprovecha la caché de Docker si no se modifican las dependencias.
+# Instala las dependencias del proyecto
 COPY package*.json ./
 RUN npm install
 
-# Copia el resto del código fuente de la aplicación
+# Copia el código fuente del proyecto
 COPY . .
 
-# Construye la aplicación para producción
+# Construye la aplicación
 RUN npm run build
 
-# Etapa de ejecución usando Nginx para servir los archivos estáticos
+# Define la etapa de ejecución usando Nginx
 FROM nginx:alpine
 
 # Copia los archivos estáticos desde la etapa de construcción
 COPY --from=builder /app/build /usr/share/nginx/html
 
-# Configura Nginx para redirigir todas las solicitudes al index.html (SPA)
+# Copia la configuración de Nginx
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Expone el puerto 80 para el tráfico HTTP
+# Expone el puerto 80
 EXPOSE 80
 
-# Inicia Nginx en primer plano
+# Comando para iniciar Nginx
 CMD ["nginx", "-g", "daemon off;"]
