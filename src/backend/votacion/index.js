@@ -17,7 +17,7 @@ app.use(async (req, res, next) => {
             return res.status(500).send({ error: 'Error al conectar con la base de datos.' });
         }
         req.db = client.db('votacion_gatos_perros');
-        req.dbClient = client;  // Guardar el cliente en el objeto de solicitud
+        req.dbClient = client;
         next();
     } catch (error) {
         return res.status(500).send({ error: 'Error de conexión a la base de datos.' });
@@ -48,7 +48,7 @@ app.listen(PORT, () => {
 });
 
 process.on('SIGINT', async () => {
-    if (global.dbClient) {  // Asumiendo que `dbClient` está definido globalmente cuando se establece la conexión
+    if (global.dbClient) {
         await global.dbClient.close();
     }
     console.log('Conexión a la base de datos cerrada');

@@ -22,7 +22,7 @@ services:
     networks:
       - votacion-net
     ports:
-      - "3000:3000"  # Exponer el puerto si es necesario para desarrollo o pruebas directas
+      - "3000:3000"
 
   frontend:
     build:
@@ -32,7 +32,7 @@ services:
     networks:
       - votacion-net
     ports:
-      - "8080:80"  # Asegúrate de exponer los puertos correctamente si el frontend necesita ser accesible directamente
+      - "8080:80"
 
 networks:
   votacion-net:
