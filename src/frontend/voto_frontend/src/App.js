@@ -7,7 +7,7 @@ function App() {
 
   const handleVote = async (animal) => {
     setVote(animal);
-    const response = await fetch('http://localhost:3000/vote', {
+    const response = await fetch('http://108.128.135.204:3000/vote', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

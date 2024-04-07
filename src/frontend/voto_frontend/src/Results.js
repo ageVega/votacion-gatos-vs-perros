@@ -5,7 +5,7 @@ function Results() {
 
   useEffect(() => {
     const fetchResults = async () => {
-      const response = await fetch('http://localhost:3000/results');
+      const response = await fetch('http://108.128.135.204:3000/results');
       const data = await response.json();
       setResults(data);
     };

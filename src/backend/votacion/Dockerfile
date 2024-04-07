@@ -6,7 +6,7 @@ WORKDIR /usr/src/app
 
 # Instalar dependencias
 COPY package*.json ./
-RUN npm install
+RUN npm cache clean --force && npm install
 # Si estás construyendo tu código para producción
 # RUN npm ci --only=production
 
@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 3000
 
 # Comando para correr la aplicación
-CMD [ "node", "index.js" ]
+CMD ["node", "index.js"]

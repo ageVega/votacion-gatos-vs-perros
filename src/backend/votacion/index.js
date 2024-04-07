@@ -1,17 +1,27 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const PORT = 3000;
 const { connect } = require('./db');
 
+app.use(cors({
+    origin: '*' // Esto permite todas las solicitudes de cualquier origen
+}));
+
 app.use(express.json());
 
 app.use(async (req, res, next) => {
-    const client = await connect();
-    if (!client) {
-        return res.status(500).send({ error: 'Error al conectar con la base de datos.' });
+    try {
+        const client = await connect();
+        if (!client) {
+            return res.status(500).send({ error: 'Error al conectar con la base de datos.' });
+        }
+        req.db = client.db('votacion_gatos_perros');
+        req.dbClient = client;  // Guardar el cliente en el objeto de solicitud
+        next();
+    } catch (error) {
+        return res.status(500).send({ error: 'Error de conexión a la base de datos.' });
     }
-    req.db = client.db('votacion_gatos_perros');
-    next();
 });
 
 app.post('/vote', async (req, res) => {
@@ -38,8 +48,9 @@ app.listen(PORT, () => {
 });
 
 process.on('SIGINT', async () => {
-    if (req.dbClient) {
-        await req.dbClient.close();
+    if (global.dbClient) {  // Asumiendo que `dbClient` está definido globalmente cuando se establece la conexión
+        await global.dbClient.close();
     }
+    console.log('Conexión a la base de datos cerrada');
     process.exit();
 });

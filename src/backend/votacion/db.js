@@ -11,7 +11,7 @@ const dbName = 'votacion_gatos_perros';
 // Opciones de conexión a MongoDB
 const options = {
     tls: true,
-    tlsCAFile: path.resolve(__dirname, 'certs/global-bundle.pem'),
+    tlsAllowInvalidCertificates: true,  // Permitir certificados inválidos
     retryWrites: false
 };
 
