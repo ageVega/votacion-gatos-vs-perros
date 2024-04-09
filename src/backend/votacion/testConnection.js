@@ -1,20 +1,14 @@
-// testConnection.js
+// src/backend/votacion/testConnection.js
+// Prueba de conexión a la base de datos MongoDB
 
-const { connect } = require('./db');
+const { connect } = require('./models/db');
 
 async function testConnection() {
-    const client = await connect();
-    if (client) {
-        console.log('Test de conexión realizado con éxito.');
-        // Proceder con las operaciones, por ejemplo:
-        // const db = client.db('votacion_gatos_perros');
-        // const col = db.collection('tuColeccion');
-        // Hacer algo con la colección...
-        
-        // Cierra la conexión solo después de completar tus operaciones
-        await client.close();
-    } else {
-        console.log('Test de conexión fallido.');
+    try {
+        const db = await connect();
+        console.log('Test de conexión realizado con éxito.', db);
+    } catch (error) {
+        console.error('Test de conexión fallido:', error.message);
     }
 }
 

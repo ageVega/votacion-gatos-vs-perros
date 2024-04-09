@@ -4,10 +4,9 @@ FROM node:18
 WORKDIR /usr/src/app
 
 COPY package*.json ./
-RUN npm cache clean --force && npm install
+RUN npm install && npm cache clean --force
 
 COPY . .
 
 EXPOSE 3000
-
-CMD ["node", "index.js"]
+CMD ["node", "server.js"]

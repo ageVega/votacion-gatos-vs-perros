@@ -16,7 +16,7 @@ def print_directory_tree(startpath, output_file, ignore_dirs=None):
     output_file.write('Estructura del proyecto:\n')
     output_file.write('```\n')
     for root, dirs, files in os.walk(startpath, topdown=True):
-        dirs[:] = [d for d in dirs if d not in ignore_dirs]  # Modifica dirs in-place para ignorar directorios no deseados
+        dirs[:] = [d for d in dirs if d not in ignore_dirs]
         level = root.replace(startpath, '').count(os.sep)
         indent = ' ' * 4 * (level)
         output_file.write('{}{}/\n'.format(indent, os.path.basename(root)))
@@ -25,12 +25,17 @@ def print_directory_tree(startpath, output_file, ignore_dirs=None):
             output_file.write('{}{}\n'.format(subindent, f))
     output_file.write('```\n\n')
 
+def clean_up_file(output_path):
+    with open(output_path, 'r') as file:
+        content = file.read()
+    content = content.replace('../../../', '')
+    with open(output_path, 'w') as file:
+        file.write(content)
+
 def read_specific_files(file_paths, output_path, directory_for_tree):
-    # Asegúrate de que el directorio de salida exista
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     
     with open(output_path, 'w') as output_file:
-        # Imprimir la estructura del directorio desde el directorio especificado
         print_directory_tree(directory_for_tree, output_file)
         
         output_file.write('Algunos ficheros relevantes:\n')
@@ -47,6 +52,8 @@ def read_specific_files(file_paths, output_path, directory_for_tree):
             relative_path = os.path.relpath(file_path, directory_for_tree)
             write_file_content(output_file, relative_path, content)
 
+    clean_up_file(output_path)
+
 # Directorio actual donde se encuentra este script
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
@@ -55,8 +62,13 @@ file_paths = [
     os.path.join(script_dir, '..', 'docker-compose.yml'),
     os.path.join(script_dir, '..', 'nginx', 'nginx.conf'),
     os.path.join(script_dir, '..', 'src', 'backend', 'votacion', 'Dockerfile'),
-    os.path.join(script_dir, '..', 'src', 'backend', 'votacion', 'db.js'),
-    os.path.join(script_dir, '..', 'src', 'backend', 'votacion', 'index.js'),
+    os.path.join(script_dir, '..', 'src', 'backend', 'votacion', 'app.js'),
+    os.path.join(script_dir, '..', 'src', 'backend', 'votacion', 'server.js'),
+    os.path.join(script_dir, '..', 'src', 'backend', 'votacion', 'testConnection.js'),
+    os.path.join(script_dir, '..', 'src', 'backend', 'votacion', 'models', 'db.js'),
+    os.path.join(script_dir, '..', 'src', 'backend', 'votacion', 'middlewares', 'dbMiddleware.js'),
+    os.path.join(script_dir, '..', 'src', 'backend', 'votacion', 'routes', 'voteRoutes.js'),
+    os.path.join(script_dir, '..', 'src', 'backend', 'votacion', 'routes', 'resultsRoutes.js'),
     os.path.join(script_dir, '..', 'src', 'frontend', 'voto_frontend', 'Dockerfile'),
     os.path.join(script_dir, '..', 'src', 'frontend', 'voto_frontend', 'nginx.conf'),
     os.path.join(script_dir, '..', 'src', 'frontend', 'voto_frontend', 'src', 'App.js'),

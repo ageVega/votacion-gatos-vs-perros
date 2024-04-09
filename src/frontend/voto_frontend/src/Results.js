@@ -6,8 +6,18 @@ function Results() {
   useEffect(() => {
     const fetchResults = async () => {
       const response = await fetch('http://108.128.135.204:3000/results');
+      if (!response.ok) {
+        console.error("Failed to fetch results:", response.status);
+        setResults([]); // Asegúrate de manejar errores adecuadamente
+        return;
+      }
       const data = await response.json();
-      setResults(data);
+      if (Array.isArray(data)) { // Verificación para asegurar que data es un arreglo
+        setResults(data);
+      } else {
+        console.error("Data is not an array:", data);
+        setResults([]); // Manejar caso donde data no es un arreglo
+      }
     };
 
     fetchResults();
