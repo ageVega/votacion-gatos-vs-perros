@@ -5,7 +5,7 @@ const PORT = 3000;
 const { connect } = require('./db');
 
 app.use(cors({
-    origin: '*' // Esto permite todas las solicitudes de cualquier origen
+    origin: '*'
 }));
 
 app.use(express.json());
