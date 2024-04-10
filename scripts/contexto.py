@@ -69,10 +69,10 @@ file_paths = [
     os.path.join(script_dir, '..', 'src', 'backend', 'votacion', 'middlewares', 'dbMiddleware.js'),
     os.path.join(script_dir, '..', 'src', 'backend', 'votacion', 'routes', 'voteRoutes.js'),
     os.path.join(script_dir, '..', 'src', 'backend', 'votacion', 'routes', 'resultsRoutes.js'),
-    os.path.join(script_dir, '..', 'src', 'frontend', 'voto_frontend', 'Dockerfile'),
-    os.path.join(script_dir, '..', 'src', 'frontend', 'voto_frontend', 'nginx.conf'),
-    os.path.join(script_dir, '..', 'src', 'frontend', 'voto_frontend', 'src', 'App.js'),
-    os.path.join(script_dir, '..', 'src', 'frontend', 'voto_frontend', 'src', 'Results.js')
+    os.path.join(script_dir, '..', 'src', 'frontend', 'votacion', 'Dockerfile'),
+    os.path.join(script_dir, '..', 'src', 'frontend', 'votacion', 'nginx.conf'),
+    os.path.join(script_dir, '..', 'src', 'frontend', 'votacion', 'src', 'App.js'),
+    os.path.join(script_dir, '..', 'src', 'frontend', 'votacion', 'src', 'Results.js')
 ]
 
 # Especifica la ruta de salida

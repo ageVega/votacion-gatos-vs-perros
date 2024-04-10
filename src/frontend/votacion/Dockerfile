@@ -1,4 +1,4 @@
-# src/frontend/voto_frontend/Dockerfile
+# src/frontend/votacion/Dockerfile
 FROM node:18 as builder
 
 WORKDIR /app
