@@ -67,6 +67,7 @@ file_paths = [
     os.path.join(script_dir, '..', 'src', 'backend', 'votacion', 'utils', 'mongoDbTestConnection.js'),
     os.path.join(script_dir, '..', 'src', 'backend', 'votacion', 'models', 'mongoDbConnection.js'),
     os.path.join(script_dir, '..', 'src', 'backend', 'votacion', 'middlewares', 'mongoDbMiddleware.js'),
+    os.path.join(script_dir, '..', 'src', 'backend', 'votacion', 'middlewares', 'errorHandler.js'),
     os.path.join(script_dir, '..', 'src', 'backend', 'votacion', 'routes', 'voteRoutes.js'),
     os.path.join(script_dir, '..', 'src', 'backend', 'votacion', 'routes', 'resultsRoutes.js'),
     os.path.join(script_dir, '..', 'src', 'frontend', 'votacion', 'Dockerfile'),
