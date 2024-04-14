@@ -9,9 +9,7 @@ const dbMiddleware = require('./middlewares/mongoDbMiddleware');
 
 const app = express();
 
-app.use(cors({
-    origin: '*' // Esto permite todas las solicitudes de cualquier origen
-}));
+app.use(cors({ origin: '*' })); // Esto permite todas las solicitudes de cualquier origen
 
 app.use(express.json());
 app.use(dbMiddleware);
@@ -19,5 +17,8 @@ app.use(dbMiddleware);
 // Rutas
 app.use(voteRoutes);
 app.use(resultsRoutes);
+
+// Manejo de errores
+app.use(errorHandler);  
 
 module.exports = app;
