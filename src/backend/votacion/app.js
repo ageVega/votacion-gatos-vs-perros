@@ -5,7 +5,7 @@ const express = require('express');
 const cors = require('cors');
 const voteRoutes = require('./routes/voteRoutes');
 const resultsRoutes = require('./routes/resultsRoutes');
-const dbMiddleware = require('./middlewares/dbMiddleware');
+const dbMiddleware = require('./middlewares/mongoDbMiddleware');
 
 const app = express();
 

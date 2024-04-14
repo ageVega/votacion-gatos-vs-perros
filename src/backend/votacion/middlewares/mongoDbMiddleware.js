@@ -1,7 +1,7 @@
 // src/backend/votacion/middlewares/dbMiddleware.js
 // Middleware para conectar a la base de datos MongoDB
 
-const { connect } = require('../models/db');
+const { connect } = require('../models/mongoDbConnection');
 
 async function dbMiddleware(req, res, next) {
     try {

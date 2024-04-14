@@ -1,7 +1,7 @@
 // src/backend/votacion/testConnection.js
 // Prueba de conexión a la base de datos MongoDB
 
-const { connect } = require('./models/db');
+const { connect } = require('../models/mongoDbConnection');
 
 async function testConnection() {
     try {
