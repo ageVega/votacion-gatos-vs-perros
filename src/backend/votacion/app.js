@@ -6,6 +6,7 @@ const cors = require('cors');
 const voteRoutes = require('./routes/voteRoutes');
 const resultsRoutes = require('./routes/resultsRoutes');
 const dbMiddleware = require('./middlewares/mongoDbMiddleware');
+const errorHandler = require('./middlewares/errorHandler');
 
 const app = express();
 
