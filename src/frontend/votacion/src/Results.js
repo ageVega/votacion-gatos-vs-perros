@@ -21,7 +21,7 @@ function Results() {
     };
 
     fetchResults();
-    const interval = setInterval(fetchResults, 5000); // Refrescar cada 5 segundos
+    const interval = setInterval(fetchResults, 1500); // Refrescar cada 1,5 segundos
 
     return () => clearInterval(interval);
   }, []);

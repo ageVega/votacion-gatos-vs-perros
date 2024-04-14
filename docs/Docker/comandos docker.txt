@@ -4,3 +4,6 @@ docker compose run votacion node testConnection.js
 
 # Parar, construir y lanzar de nuevo
 git pull && docker compose down && docker compose build --no-cache && docker compose up
+
+# Limpieza de todo docker
+docker system prune -a && docker volume rm $(docker volume ls -f dangling=true -q)
