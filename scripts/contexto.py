@@ -60,7 +60,6 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 # Especifica las rutas de los archivos que quieres leer
 file_paths = [
     os.path.join(script_dir, '..', 'docker-compose.yml'),
-    os.path.join(script_dir, '..', 'nginx', 'nginx.conf'),
     os.path.join(script_dir, '..', 'src', 'backend', 'votacion', 'Dockerfile'),
     os.path.join(script_dir, '..', 'src', 'backend', 'votacion', 'app.js'),
     os.path.join(script_dir, '..', 'src', 'backend', 'votacion', 'server.js'),

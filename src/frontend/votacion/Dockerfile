@@ -17,9 +17,6 @@ FROM nginx:alpine
 # Copia los archivos estáticos desde la etapa de construcción
 COPY --from=builder /app/build /usr/share/nginx/html
 
-# Copia la configuración de Nginx
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
 EXPOSE 80
 
 # Comando para iniciar Nginx
