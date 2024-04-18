@@ -7,7 +7,7 @@ function App() {
 
   const handleVote = async (animal) => {
     setVote(animal);
-    const response = await fetch('http://gatos-vs-perros.agevega.com:3000/vote', {
+    const response = await fetch('https://gatos-vs-perros.agevega.com/api/vote', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -16,8 +16,8 @@ app.use(express.json());
 app.use(dbMiddleware);
 
 // Rutas
-app.use(voteRoutes);
-app.use(resultsRoutes);
+app.use('/api', voteRoutes);
+app.use('/api', resultsRoutes);
 
 // Manejo de errores
 app.use(errorHandler);  

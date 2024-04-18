@@ -5,7 +5,7 @@ function Results() {
 
   useEffect(() => {
     const fetchResults = async () => {
-      const response = await fetch('http://gatos-vs-perros.agevega.com:3000/results');
+      const response = await fetch('https://gatos-vs-perros.agevega.com/api/results');
       if (!response.ok) {
         console.error("Failed to fetch results:", response.status);
         setResults([]); // Asegúrate de manejar errores adecuadamente
