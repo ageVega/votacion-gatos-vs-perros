@@ -2,6 +2,7 @@ services:
   nginx-proxy:
     image: nginxproxy/nginx-proxy
     container_name: nginx-proxy
+    restart: always
     labels:
       com.github.nginx-proxy.nginx_proxy: "true"
     ports:
@@ -18,6 +19,7 @@ services:
   nginx-proxy-acme:
     image: nginxproxy/acme-companion
     container_name: nginx-proxy-acme
+    restart: always
     depends_on:
       - nginx-proxy
     volumes:
@@ -36,7 +38,7 @@ services:
     build:
       context: ./src/backend/votacion
     container_name: backend
-    restart: on-failure
+    restart: unless-stopped
     expose:
       - "3000"
     environment:
@@ -51,7 +53,7 @@ services:
     build:
       context: ./src/frontend/votacion
     container_name: frontend
-    restart: on-failure
+    restart: always
     expose:
       - "80"
     environment:
