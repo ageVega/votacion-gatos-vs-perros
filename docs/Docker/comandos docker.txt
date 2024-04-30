@@ -1,6 +1,7 @@
 
 # Ejecutar el Script de Prueba desde Fuera del Contenedor
-docker compose run votacion node testConnection.js
+docker compose run backend node utils/testConnection.js
+docker exec -it backend curl http://localhost:3000/api/results
 
 # Parar, construir y lanzar de nuevo
 git pull && docker compose down && docker compose build --no-cache && docker compose up
