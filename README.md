@@ -1,4 +1,3 @@
-
 # Votación Gatos vs Perros
 
 ## Descripción General
@@ -15,6 +14,15 @@
 La aplicación se estructura en microservicios:
 - **Servicio de Votación y Resultados:** Dos servicios separados en el backend procesan las votaciones y gestionan la recuperación de resultados, respectivamente.
 - **Frontend SPA (Single Page Application):** Una aplicación de página única que presenta la interfaz de usuario.
+
+## Infraestructura AWS
+La infraestructura de AWS diseñada para `Votación Gatos vs Perros` incluye los siguientes componentes clave:
+- **VPC:** Una Virtual Private Cloud (VPC) personalizada para aislar y controlar el entorno de red.
+- **Subredes:** Tres subredes públicas y tres subredes privadas distribuidas en diferentes zonas de disponibilidad para alta disponibilidad y seguridad.
+- **Internet Gateway:** Un gateway de Internet asociado a la VPC que permite la comunicación entre los recursos de AWS en la VPC y el internet.
+- **Security Groups:** Grupos de seguridad configurados para restringir el acceso a los recursos según las necesidades de cada servicio.
+- **Ruta de Acceso:** Configuración de rutas para dirigir el tráfico externo e interno adecuadamente.
+- **Instancias EC2 y DocumentDB:** Servidores EC2 para operaciones de bastión y un clúster de DocumentDB para el almacenamiento de datos.
 
 ## Configuración del Entorno de Desarrollo
 Asegúrate de tener instalado Node.js y npm. Para configurar el entorno localmente, sigue estos pasos:
