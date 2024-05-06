@@ -1,18 +1,25 @@
 
+# #################################
+# PRUEBAS DNS
+# #################################
 
-# Comando modificado para votar por gatos
+# Llamada a la API para votar por gatos
 curl -X POST https://gatos-vs-perros.agevega.com/api/vote -H 'Content-Type: application/json' -d '{"animal": "gatos"}'
 
-# Comando modificado para obtener resultados
+# Llamada a la API para obtener resultados
 curl https://gatos-vs-perros.agevega.com/api/results
 
+
+# #################################
+# PRUEBAS LOCALHOST
+# #################################
 
 Añadiendo al backend:
   ports:
     - "3000:3000"  # Mapeo del puerto para acceso directo
 
-# Comando modificado para votar por gatos
+# Llamada a la API para votar por gatos
 curl -X POST http://localhost:3000/api/vote -H 'Content-Type: application/json' -d '{"animal": "gatos"}'
 
-# Comando modificado para obtener resultados
+# Llamada a la API para obtener resultados
 curl http://localhost:3000/api/results
