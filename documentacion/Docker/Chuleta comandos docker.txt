@@ -1,6 +1,6 @@
 
 # Ejecutar el Script de Prueba desde Fuera del Contenedor
-docker compose run backend node utils/testConnection.js
+docker compose run backend node utils/mongoDbTestConnection.js
 docker exec -it backend curl http://localhost:3000/api/results
 
 # Parar, construir y lanzar de nuevo
